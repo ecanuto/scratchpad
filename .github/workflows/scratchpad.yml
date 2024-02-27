@@ -33,4 +33,7 @@ jobs:
 
           EOF
 
+          for value in releases.out ; do
+            echo $value
+          done
           cat releases.out >> $GITHUB_STEP_SUMMARY
