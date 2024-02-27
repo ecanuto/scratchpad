@@ -11,26 +11,26 @@ jobs:
       # - uses: actions/checkout@v3
 
       - id: debian-new-cloud-releases
-        name: List new Debian cloud image releases
+        name: New releases
         env:
           DEBIAN_VERSION: 12
           DEBIAN_VERNAME: bookworm
           DEBIAN_RELEASE: 20231210-1590
         run: |
+          # Releases
           releases=$(
             curl -s "https://cloud.debian.org/images/cloud/$DEBIAN_VERNAME/" | \
             sed -nr 's/.+<a href="([0-9]{8}-[0-9]{4})\/.+/\1/p' |
             sed -e "1,/$DEBIAN_RELEASE/d"
           )
+          echo "$releases" > releases.out
           echo "$releases"
-          echo "releases=\"$releases\"" >> $GITHUB_OUTPUT
 
       - name: Summary
         run: |
           cat >> "$GITHUB_STEP_SUMMARY" <<-EOF
             ### New releases! :rocket:
 
-            ${{ steps.debian-new-cloud-releases.outputs.* }}
-
-            :rocket:
           EOF
+
+          cat releases.out
