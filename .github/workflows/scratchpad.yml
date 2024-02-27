@@ -34,5 +34,5 @@ jobs:
           EOF
 
           while read release; do
-            echo "* `$release`"
+            echo "* $release"
           done < "releases.out" >> $GITHUB_STEP_SUMMARY
