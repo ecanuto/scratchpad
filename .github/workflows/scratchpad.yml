@@ -26,8 +26,10 @@ jobs:
 
       - name: Summary
         run: |
-          cat >> "$GITHUB_STEP_SUMMARY" <<-EOF
+          cat >> "$GITHUB_STEP_SUMMARY" <<EOF
             ### New releases! :rocket:
 
             ${{ steps.debian-new-cloud-releases.outputs.stdout }} 
+
+            :rocket:
           EOF        
