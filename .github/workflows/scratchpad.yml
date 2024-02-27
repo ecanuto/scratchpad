@@ -33,4 +33,4 @@ jobs:
 
           EOF
 
-          cat releases.out
+          cat releases.out >> $GITHUB_STEP_SUMMARY
