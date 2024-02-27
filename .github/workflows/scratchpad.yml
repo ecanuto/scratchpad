@@ -34,5 +34,5 @@ jobs:
           EOF
 
           while read release; do
-            echo "* $release"
+            echo "* [$release](https://cloud.debian.org/images/cloud/bookworm/$release/)"
           done < "releases.out" >> $GITHUB_STEP_SUMMARY
