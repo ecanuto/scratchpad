@@ -23,14 +23,14 @@ jobs:
             sed -e "1,/$DEBIAN_RELEASE/d"
           )
           echo "$releases"
-          echo "releases=$releases" >> $GITHUB_OUTPUT
+          echo "releases=\"$releases\"" >> $GITHUB_OUTPUT
 
       - name: Summary
         run: |
           cat >> "$GITHUB_STEP_SUMMARY" <<-EOF
             ### New releases! :rocket:
 
-            ${{ steps.debian-new-cloud-releases.outputs.releases }}
+            ${{ steps.debian-new-cloud-releases.outputs.* }}
 
             :rocket:
           EOF
