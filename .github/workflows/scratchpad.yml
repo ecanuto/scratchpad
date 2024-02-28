@@ -36,3 +36,5 @@ jobs:
           while read release; do
             echo "* [$release](https://cloud.debian.org/images/cloud/bookworm/$release/)"
           done < "releases.out" >> $GITHUB_STEP_SUMMARY
+
+          exit 1
